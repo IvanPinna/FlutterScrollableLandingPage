@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:scrollable_landing_page/router/router.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(MainApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MainApp extends StatefulWidget {
+  MainApp({super.key});
 
   @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  @override
+  void initState() {
+    Flurorouter.configureRoutes();
+  }
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      home: Scaffold(),
+      title: 'Landing Page',
+      initialRoute: '/home',
+      onGenerateRoute: Flurorouter.router.generator,
       );
   }
 }
