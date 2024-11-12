@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:scrollable_landing_page/providers/page_provider.dart';
 import 'package:scrollable_landing_page/ui/shared/custom_app_menu.dart';
 
 import 'package:scrollable_landing_page/ui/views/about_view.dart';
@@ -48,8 +51,10 @@ class _HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pageProvider = Provider.of<PageProvider>(context, listen: false);
+    
     return PageView(
-
+      controller: pageProvider.scrollController,
       scrollDirection: Axis.vertical,
       children: [
         HomeView(),

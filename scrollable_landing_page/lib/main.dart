@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:scrollable_landing_page/providers/page_provider.dart';
 import 'package:scrollable_landing_page/router/router.dart';
 
 void main() {
-  runApp(MainApp());
+  runApp(AppState());
+}
+
+class AppState extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: ( _ ) => PageProvider())
+      ],
+      child: MainApp(),
+    );
+  }
 }
 
 class MainApp extends StatefulWidget {

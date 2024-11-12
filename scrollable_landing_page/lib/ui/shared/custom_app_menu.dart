@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:scrollable_landing_page/providers/page_provider.dart';
 import 'package:scrollable_landing_page/ui/shared/custom_menu_item.dart';
 
 class CustomAppMenu extends StatefulWidget{
@@ -21,6 +23,9 @@ class _CustomAppMenuState extends State<CustomAppMenu> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
+
+    final pageProvider = Provider.of<PageProvider>(context, listen: false);
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -48,11 +53,11 @@ class _CustomAppMenuState extends State<CustomAppMenu> with SingleTickerProvider
 
              if(isOpen)
              ...[
-             CustomMenuItem(delay: 0, text: 'Home', onPressed: (){}),
-             CustomMenuItem(delay: 20, text: 'About', onPressed: (){}),
-             CustomMenuItem(delay: 40, text: 'Pricing', onPressed: (){}),
-             CustomMenuItem(delay: 60, text: 'Contact', onPressed: (){}),
-             CustomMenuItem(delay: 80, text: 'Location', onPressed: (){}),
+             CustomMenuItem(delay: 0, text: 'Home', onPressed: () => pageProvider.goTo(0)),
+             CustomMenuItem(delay: 20, text: 'About', onPressed: () => pageProvider.goTo(1)),
+             CustomMenuItem(delay: 40, text: 'Pricing', onPressed: () => pageProvider.goTo(2)),
+             CustomMenuItem(delay: 60, text: 'Contact', onPressed: () => pageProvider.goTo(3)),
+             CustomMenuItem(delay: 80, text: 'Location', onPressed: () => pageProvider.goTo(4)),
              SizedBox(height: 8)
              ]
             ]
